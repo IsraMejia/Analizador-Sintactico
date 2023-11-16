@@ -26,7 +26,7 @@ class Scanner:
     }
 
     def __init__(self, codigo):
-        self.codigo = codigo 
+        self.codigo = codigo + '\n'
         self.caracterActual = ''    
         self.posicionActual = -1    
         self.sigCaracter()
@@ -62,6 +62,7 @@ class Scanner:
             token = Token(self.caracterActual, TipodeTokens.ASTERISCO)
         elif self.caracterActual == self.palabras_reservadas['diagonal'][0] :
             token = Token(self.caracterActual, TipodeTokens.DIAGONAL)
+        
         elif self.caracterActual == self.palabras_reservadas['asignacion'][0] : 
             if self.sigCaracter() == self.palabras_reservadas['asignacion'][0] :
                 ultimoCaracter = self.caracterActual
@@ -69,6 +70,7 @@ class Scanner:
                 token = Token(ultimoCaracter + self.caracterActual, TipodeTokens.IGUAL)
             else:
                 token = Token(self.caracterActual, TipodeTokens.ASIGNACION)
+
         elif self.caracterActual == self.palabras_reservadas['mayor_que'][0]  : 
             if self.sigCaracter() == self.palabras_reservadas['asignacion'][0] :
                 ultimoCaracter = self.caracterActual

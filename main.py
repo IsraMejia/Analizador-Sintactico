@@ -9,15 +9,15 @@ def main():
     
     
     codigo = """
-        PRINT "hello world"
-        PRINT "second line"
-        PRINT "and a third"
+        IMPRIMIR "hello world"
+        IMPRIMIR "second line" 
     """ 
     codigo = codigo + "\n"     
     scanner = Scanner(codigo)
     print(f' A continuacion se muestra el codigo ingresado: \n {codigo} \n\n\nAnalizando ...')
     print("\nSe ha analizado el codigo ingresado, retornando los siguientes tokens:\n")
 
+    '''
     token = scanner.caracterAToken() 
     while token.tipoToken != TipodeTokens.FIN_DE_LINEA: 
         print(f"\tLeido\t\t{token.caracterToken}\t\t----Tokenizado a --->\t\t{token.tipoToken} \n")
@@ -26,10 +26,11 @@ def main():
     print("\n\n Analizador Lexico finalizado  \n")
 
     print('Iniciando analisis sintactico')
-
+    '''
+    scanner = Scanner(codigo)
     parser = Parser(scanner)
 
     parser.analizaEstructura()  
-    print("Parsing completed.")
+    print("Parser completado")
 
 main()

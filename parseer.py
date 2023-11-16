@@ -18,10 +18,12 @@ class Parser:
 
      
     def revisarToken(self, kind):
+        print(f'revisaToken = {self.tokenActual.tipoToken}')
         return kind == self.tokenActual.tipoToken
 
      
     def analizarToken(self, kind):
+        print(f'analizarToken = {self.tokenActual.tipoToken}')
         return kind == self.tokenObservandose.tipoToken
 
      
@@ -125,7 +127,7 @@ class Parser:
             self.comparaToken(TipodeTokens.instruccion)
 
         # "LET" instruccion "=" expresion
-        elif self.revisarToken(TipodeTokens.LET):
+        elif self.revisarToken(TipodeTokens.VARIABLE):
             print("estado-LET")
             self.siguienteToken()
 
@@ -153,8 +155,9 @@ class Parser:
         else:
             mensajeFin =f"""
                 Estado sintactico invalido : 
-                    {self.tokenActual.text}  ( {self.tokenActual.tipoToken.name} )
+                    {self.tokenActual.caracterToken}  ( {self.tokenActual.tipoToken.name} )
             """
+            #self.terminarSintactico("Invalid statement at " + self.tokenActual.caracterToken + " (" + self.tokenActual.tipoToken.name+ ")")
             self.terminarSintactico(mensajeFin)
 
         # NUEVA_LINEA.
