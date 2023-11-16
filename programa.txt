@@ -1,0 +1,5 @@
+INT a = 10
+INT d = 5
+INT b = a+d
+
+IMPRIMIR "Hola Mundo"
